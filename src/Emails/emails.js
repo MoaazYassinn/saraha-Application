@@ -8,16 +8,16 @@ export const sendEmails=async(email)=>{
     const transporter = nodemailer.createTransport({
         service:"gmail",
         auth: {
-          user: "willknowyou578@gmail.com",
-          pass: "calrfvbwjtsmhnju",
+          user: "anyemail@gmail.com",
+          pass: "anypass",
         },
       });
-       let token=Jwt.sign({email},"myNameIsMoaaz")
+       let token=Jwt.sign({email},process.env.JWT_KEY)
 
       const info = await transporter.sendMail({
-        from: '"YouWillKnow" <willknowyou578@gmail.com>', 
+        from: '"anyName" <email>', 
         to: email, // list of receivers
-        subject: "Forgive me", // Subject line // plain text body
+        subject: "Subject", // Subject line // plain text body
         html:template(token), // html body
       });
     
